@@ -6,9 +6,6 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        /*Connection myConn = null; // objeto de conexión
-        Statement myStam = null; // objeto de statement
-        ResultSet myRest = null; // nos permite procesar nuestros resultados*/
 
         try (Connection myConn = DatabaseConnection.getInstance();
              Statement myStam = myConn.createStatement();

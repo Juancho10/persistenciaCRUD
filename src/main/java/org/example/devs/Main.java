@@ -5,11 +5,11 @@ import org.example.devs.util.DatabaseConnection;
 import java.sql.*;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
 
         try (Connection myConn = DatabaseConnection.getInstance();
              Statement myStam = myConn.createStatement();
-             ResultSet myRest = myStam.executeQuery("SELECT * FROM users");){
+             ResultSet myRest = myStam.executeQuery("SELECT * FROM users")){
 
                 System.out.println("estas dentro");
 

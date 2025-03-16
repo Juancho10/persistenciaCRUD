@@ -1,79 +1,89 @@
 package org.example.devs.repository;
 
-public class UserRepository {
-    private int id;
-    private String document;
-    private String name;
-    private String lastName;
-    private String email;
-    private String password;
-    private int idRol;
+import org.example.devs.model.User;
+import org.example.devs.util.DatabaseConnection;
 
-    public UserRepository(){}
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-    public UserRepository(String document, String name, String lastName, String email, String password, int idRol) {
-        this.document = document;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.idRol = idRol;
+public class UserRepository implements IRepository<User>{
+
+    private Connection getConection() throws SQLException {
+        return DatabaseConnection.getInstance();
     }
 
+    @Override
+    public List<User> findAll() throws SQLException {
+        List<User> listUsers = new ArrayList<>();
+        try(Statement myStam = getConection().createStatement();
+            ResultSet myRest = myStam.executeQuery("SELECT * FROM users")){
+            while(myRest.next()){
+                User u = createUser(myRest);
+                listUsers.add(u);
+            }
 
-    public int getId() {
-        return id;
+        }
+        return listUsers;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public User getByID(Integer id) throws SQLException {
+        User users = null;
+        try(PreparedStatement myPrepStam = getConection().prepareStatement("SELECT * FROM users WHERE id = ?")){
+            myPrepStam.setInt(1,id);
+            try(ResultSet myRes = myPrepStam.executeQuery()){
+                if(myRes.next()){
+                    users = createUser(myRes);
+                }
+
+            }
+        }
+        return users;
     }
 
-    public String getDocument() {
-        return document;
+    @Override
+    public void save(User user) throws SQLException {
+        String sql;
+        if(user.getId() > 0){
+            sql = "UPDATE users set document = ?, name = ?, lastName = ?, email = ?, password = ?, idRoles = ? WHERE id = ?";
+        }else{
+            sql = "INSERT INTO users (document, name, lastName, email, password, idRoles) values (?,?,?,?,?,?)";
+        }
+        try(PreparedStatement myPrepStatm = getConection().prepareStatement(sql)){
+            myPrepStatm.setString(1,user.getDocument());
+            myPrepStatm.setString(2,user.getName());
+            myPrepStatm.setString(3, user.getLastName());
+            myPrepStatm.setString(4, user.getEmail());
+            myPrepStatm.setString(5, user.getPassword());
+            myPrepStatm.setInt(6, user.getIdRol());
+
+            if (user.getId() != 0){
+                myPrepStatm.setInt(7,user.getId());
+            }
+
+            int rowsAfeccted = myPrepStatm.executeUpdate();
+            if (rowsAfeccted > 0)
+                System.out.println("successfull");
+        }
+
     }
 
-    public void setDocument(String document) {
-        this.document = document;
+    @Override
+    public void delete(Integer id) {
+
+    }
+    public User createUser (ResultSet rest) throws SQLException {
+        User u = new User();
+        u.setId(rest.getInt("id"));
+        u.setDocument(rest.getString("document"));
+        u.setName(rest.getString("name"));
+        u.setLastName(rest.getString("lastName"));
+        u.setEmail(rest.getString("email"));
+        u.setPassword(rest.getString("password"));
+        u.setIdRol(rest.getInt("idRoles"));
+
+        return u;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(int idRol) {
-        this.idRol = idRol;
-    }
 }

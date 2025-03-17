@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b43e038e-2408-4356-bcbc-ef66cb9c8828" name="Changes" comment="Se corrigen warnings">
+    <list default="true" id="b43e038e-2408-4356-bcbc-ef66cb9c8828" name="Changes" comment="Se implementa singleton para la conexión unica a la BD y se implementa patron repository para creación de un CRUD">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/view/SwingApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/devs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/devs/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/devs/repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/repository/IRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/devs/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/devs/util/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/devs/util/DatabaseConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,24 +106,22 @@
       <option name="project" value="LOCAL" />
       <updated>1742076550389</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se implementa singleton para la conexión unica a la BD y se implementa patron repository para creación de un CRUD">
+      <option name="closed" value="true" />
+      <created>1742098438718</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742098438718</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se crea el proyecto y se organiza segun paquetes" />
     <MESSAGE value="Se crea el modelo de usuario y la conexión a base de datos" />
     <MESSAGE value="Se corrigen warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se corrigen warnings" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/devs/repository/UserRepository.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Se implementa singleton para la conexión unica a la BD y se implementa patron repository para creación de un CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se implementa singleton para la conexión unica a la BD y se implementa patron repository para creación de un CRUD" />
   </component>
 </project>

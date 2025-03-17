@@ -8,16 +8,20 @@ public class User {
     private String email;
     private String password;
     private int idRol;
+    private String curp;
+
+
 
     public User(){}
 
-    public User(String document, String name, String lastName, String email, String password, int idRol) {
+    public User(String document, String name, String lastName, String email, String password, int idRol, String curp) {
         this.document = document;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.idRol = idRol;
+        this.curp = curp;
     }
     public User(int id, String document, String name, String lastName, String email, String password, int idRol){
         this.id = id;
@@ -84,6 +88,13 @@ public class User {
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
+    }
+    public String getCurp() {
+        return curp;
+    }
+
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
     @Override

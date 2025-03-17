@@ -11,8 +11,8 @@ public interface IRepository <T>{
     //Este metodo nos permite llegar a modificar o crear un nuevo objeto T
     void save(T t) throws SQLException;
 
-    //Este metodo nos permite segun el id
+    //Este metodo nos permite segun el id eliminar datos
 
-    void delete(Integer id);
+    void delete(Integer id) throws SQLException;
 
 }
